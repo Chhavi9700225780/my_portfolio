@@ -5,8 +5,10 @@ A terminal-style developer portfolio built to showcase skills and projects throu
 
 🌐 **Live Demo:**
 
-![Portfolio Screenshot](<img width="1918" height="897" alt="image" src="https://github.com/user-attachments/assets/3cda5bd9-180a-4f50-897a-7f366f8c6ae6" />
-)
+## Portfolio Screenshot
+
+<img width="1918" height="897" alt="image" src="https://github.com/user-attachments/assets/a9f45784-8ede-4c02-92c2-ee5f40f9fd4a" />
+
 
 ### Built With
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/HTML)
