@@ -246,8 +246,14 @@ function newTab(link) {
   }, 500);
 }
 
+
+//function addLine(text, style, time) { let t = ""; for (let i = 0; i < text.length; i++) { if (text.charAt(i) === " " && text.charAt(i + 1) === " ") { t += "&nbsp;&nbsp;"; i++; } else { t += text.charAt(i); } } setTimeout(function () { const next = document.createElement("p"); next.innerHTML = t; next.className = style; before.parentNode.insertBefore(next, before); contentscroll.scrollTop = contentscroll.scrollHeight; }, time); } function loopLines(name, style, time) { name.forEach(function (item, index) { addLine(item, style, index * time); }); setTimeout( function () { scrollToBottom(); }, name.length * time + 50, ); }
+
+
 function addLine(text, style, time) {
   let t = "";
+
+  // Keep your original spacing logic
   for (let i = 0; i < text.length; i++) {
     if (text.charAt(i) === " " && text.charAt(i + 1) === " ") {
       t += "&nbsp;&nbsp;";
@@ -257,26 +263,54 @@ function addLine(text, style, time) {
     }
   }
 
-  setTimeout(function () {
+  setTimeout(() => {
     const next = document.createElement("p");
-    next.innerHTML = t;
     next.className = style;
     before.parentNode.insertBefore(next, before);
-    contentscroll.scrollTop = contentscroll.scrollHeight;
+
+    let raw = t;                 // full HTML string
+    let output = "";             // what user sees typing
+    let i = 0;
+
+    function typeChar() {
+      if (i < raw.length) {
+        // ✅ If HTML tag → inject instantly
+        if (raw[i] === "<") {
+          const close = raw.indexOf(">", i);
+          output += raw.substring(i, close + 1);
+          next.innerHTML = output;
+          i = close + 1;
+        }
+        // ✅ Normal visible character → type it
+        else {
+          output += raw[i];
+          next.innerHTML = output;
+          i++;
+        }
+
+        contentscroll.scrollTop = contentscroll.scrollHeight;
+        setTimeout(typeChar, 18);   // typing speed
+      }
+    }
+
+    typeChar();
   }, time);
 }
+
 
 function loopLines(name, style, time) {
   name.forEach(function (item, index) {
     addLine(item, style, index * time);
   });
-  setTimeout(
-    function () {
-      scrollToBottom();
-    },
-    name.length * time + 50,
-  );
+
+  setTimeout(function () {
+    scrollToBottom();
+  }, name.length * time + 50);
 }
+
+
+
+
 
 function findClosestCommand(input) {
   const threshold = 3;

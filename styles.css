@@ -217,7 +217,7 @@ hr {
   }
   .profile-info {
     padding-top: var(--step--2);
-  }
+    margin-left: 25px; }
 
   .spotify-panel {
     float: left;
@@ -234,7 +234,7 @@ hr {
 
 @media (max-width: 726px) {
   #terminal {
-    height: 38vh;
+    height: 30vh;
   }
 }
 
