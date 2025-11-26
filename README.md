@@ -4,7 +4,7 @@
 A terminal-style developer portfolio built to showcase skills and projects through a fun, interactive command-line interface.
 
 🌐 **Live Demo:**
-
+ https://chhavi9700225780.github.io/my_portfolio/
 ## Portfolio Screenshot
 
 <img width="1918" height="897" alt="image" src="https://github.com/user-attachments/assets/a9f45784-8ede-4c02-92c2-ee5f40f9fd4a" />
