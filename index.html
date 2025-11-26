@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio | Chhavi — Type help for a list of supported commands."
+    />
+    <meta
+      name="keywords"
+      content="chhavi, portfolio, cloud, devops, terminal-portfolio"
+    />
+    <meta name="author" content="Chhavi" />
+
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://kit.fontawesome.com" crossorigin />
+    <link rel="preload" href="assets/cat.webp" as="image" type="image/webp" />
+    <link
+      rel="preload"
+      href="assets/beautifullanimestreetscenerycherryblossom.webp"
+      as="image"
+      type="image/webp"
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/fantasquesansmonoregular.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+
+    <link href="styles.css" rel="stylesheet" />
+
+    <script
+      src="https://kit.fontawesome.com/39565093f3.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
+    <style>
+      section h1 {
+        font-size: 2rem;
+      }
+    </style>
+
+    <!-- Spotify API (Update username if you want real track data) -->
+   
+    <title>Chhavi</title>
+  </head>
+
+  <body>
+    <div class="terminal-window" role="main">
+      <header role="banner">
+        <a
+          href="https://github.com/Chhavi9700225780"
+          target="_blank"
+          aria-label="GitHub Profile"
+        >
+          <i class="fa-brands fa-github header-icon github-icon"></i>
+        </a>
+
+        <div class="centered">chhavi@portfolio</div>
+
+        <a href="#" onclick="close_window(); return false;">
+          <i class="fa-solid fa-circle-xmark header-icon close-icon"></i>
+        </a>
+      </header>
+
+      <hr />
+
+      <div id="contentscroll">
+        <div class="content-container">
+          <div class="ascii-Hero">
+            <pre class="ascii">
+█▀▀ █░█ █░█ █▀█ █░█ █ 
+█▄▄ █▀█ █▀█ █▀▄ ▀▄▀ █
+
+            </pre>
+          </div>
+
+          <section class="profile-info">
+            <div class="info-item">
+              <div class="name">
+                <i class="fa-solid fa-address-card"></i>
+                <span>Chhavi</span>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <i class="fa-solid fa-file-invoice"></i>
+              <span>Resume</span>
+              <a
+                href="https://drive.google.com/file/d/1SPBqQD46b0DpbskV-IqQd8XqkJ3CKWrE/view?usp=sharing"
+                class="link-text"
+                target="_blank"
+                >→ &nbsp;Download my resume...</a
+              >
+            </div>
+
+            <div class="info-item">
+              <i class="fa-brands fa-github"></i>
+              <span>GitHub</span>
+              <a
+                href="https://github.com/Chhavi9700225780"
+                class="link-text"
+                target="_blank"
+                >→ &nbsp;github.com/Chhavi9700225780</a
+              >
+            </div>
+
+            <div class="info-item">
+              <i class="fa-brands fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+              <a
+                href="https://www.linkedin.com/in/chhavi-265863299/"
+                class="link-text"
+                target="_blank"
+                >→ &nbsp;linkedin.com/in/chhavi-265863299</a
+              >
+            </div>
+
+            <div class="info-item">
+              <i class="fa-brands fa-code"></i>
+              <span>LeetCode</span>
+              <a
+                href="https://leetcode.com/u/chhavi_1696/"
+                class="link-text"
+                target="_blank"
+                >→ &nbsp;leetcode.com/u/chhavi_1696</a
+              >
+            </div>
+
+            <div class="info-item">
+              <i class="fa-solid fa-terminal"></i>
+              <span>CodeChef</span>
+              <a
+                href="https://www.codechef.com/users/c9081741"
+                class="link-text"
+                target="_blank"
+                >→ &nbsp;codechef.com/users/c9081741</a
+              >
+            </div>
+
+            <div class="info-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>Email</span>
+              <a
+                href="mailto:c9081741@gmail.com"
+                class="link-text"
+                target="_blank"
+                >→ &nbsp;c9081741@gmail.com</a
+              >
+            </div>
+          </section>
+        </div>
+
+        <!-- terminal input -->
+        <section id="terminal">
+          <a id="before"></a>
+
+          <div id="command">
+            <input
+              type="text"
+              id="texter"
+              class="texter"
+              onkeyup="typeIt(this, event)"
+              onkeydown="typeIt(this, event); moveIt(this.value.length, event)"
+              onkeypress="typeIt(this, event)"
+            />
+            <div id="liner">
+              <span id="typer"></span><b class="cursor" id="cursor">█</b>
+              <div class="list"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="bottom-bar">
+  <div class="spotify-panel">
+    <div class="spotify-inner">
+      <i
+        class="fa-solid fa-music spotify-icon"
+        aria-hidden="true"
+        onclick="togglePlay()"
+        style="cursor: pointer;"
+      ></i>
+
+      <div class="track-info">
+        <a href="#">
+          <div class="spotify-info">Now Playing...</div>
+          <div id="track">Track: <span id="track-name">Nostalgic Melody</span></div>
+          <div id="song">Artist: <span id="artist-name">Universe Music</span></div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hidden Audio Player -->
+    <audio id="myAudio">
+      <source src="assets/myaudio.m4a" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</footer>
+
+
+      <picture>
+        <source srcset="assets/cat.webp" type="image/webp" />
+        <img src="assets/cat.gif" id="cursor-cat-gif" alt="cursor-follower" loading="lazy" />
+      </picture>
+
+      <script src="js/theme.js" defer></script>
+      <script src="js/caret.js" defer></script>
+      <script src="js/cursor.js" defer></script>
+      <script src="js/commands.js" defer></script>
+      <script src="js/main.js" defer></script>
+
+    </div>
+  </body>
+</html>
